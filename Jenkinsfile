@@ -1,10 +1,15 @@
+@Library('shared-library@master') _
+ 
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }
+    agent any
     stages {
-        stage('build') {
+        stage('Git Checkout') {
             steps {
-                sh 'mvn --version'
+            checkout(
+                branch: "master",
+                url: "https://github.com/samayaramesh/module"
+            )
             }
-        }
+    }
     }
 }
